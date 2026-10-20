@@ -20,3 +20,4 @@ CREATE TABLE training_courses (
     start_date DATE,
     FOREIGN KEY (horse_id) REFERENCES horses(id) ON DELETE CASCADE
 );
+
