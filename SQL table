@@ -1,0 +1,25 @@
+-- Create the database
+CREATE DATABASE IF NOT EXISTS racehorse_training;
+USE racehorse_training;
+
+-- Parent table: Racehorses
+CREATE TABLE horses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    owner_name VARCHAR(100) NOT NULL,
+    breed VARCHAR(50),
+    age INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Child table: Training Courses (many courses per horse)
+CREATE TABLE training_courses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    horse_id INT NOT NULL,
+    course_name VARCHAR(100) NOT NULL,         
+    trainer VARCHAR(100),
+    duration_days INT,
+    intensity VARCHAR(20),                      
+    start_date DATE,
+    FOREIGN KEY (horse_id) REFERENCES horses(id) ON DELETE CASCADE
+);
